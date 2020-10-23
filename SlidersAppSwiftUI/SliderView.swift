@@ -15,7 +15,7 @@ struct SliderView: View {
     
     var body: some View {
         HStack {
-            Text("\(lround((value)))")
+            Text("\(lround(value))")
                 .frame(width: 31)
             Slider(value: $value, in: 0...255)
                 .accentColor(color)
@@ -38,7 +38,7 @@ struct SliderView: View {
 
 extension SliderView {
     private func checkEnteredNumber() {
-        guard value >= 0, value <= 255 else {
+        if !(0...255).contains(value) {
             value = 0
             showAlert = true
             return
